@@ -1,4 +1,3 @@
-# main.py
 from config import GEMINI_API_KEY, GEMINI_MODEL, MAX_OUTPUT_TOKENS
 from google import genai
 from config import GEMINI_API_KEY, GEMINI_MODEL
@@ -10,8 +9,7 @@ from personas.barney import BARNEY
 from prompts.system_prompt import build_system_prompt
 
 
-# ── Persona Registry ──────────────────────────────────────────
-# WHY A DICTIONARY: To add a new persona, just import it
+#To add a new persona, just import it
 # and add one line here. Nothing else changes.
 PERSONAS = {
     "1": SHERLOCK,

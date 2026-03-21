@@ -1,4 +1,3 @@
-# gemini_sdk.py
 from google import genai
 from config import GEMINI_API_KEY, GEMINI_MODEL, TEMPERATURE_BALANCED
 
