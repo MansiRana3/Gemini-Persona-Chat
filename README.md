@@ -17,6 +17,8 @@ Current characters:
 - Phil Dunphy 🏡
 - Barney Stinson 👔
 
+Saves every conversation to chat.txt when you quit
+
 ---
 
 ## How to run it
@@ -85,7 +87,6 @@ I kept things separated on purpose — personas know nothing about API calls, AP
 
 ## Things I want to add later
 
-- Save chat history so characters remember across sessions
 - Web UI instead of CLI
 - RAG so characters can reference custom documents
 - More characters
