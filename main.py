@@ -64,6 +64,17 @@ def chat_with_persona(persona: dict):
 
         if user_input.lower() in ["quit", "exit"]:
             print(f"\n{persona['name']}: Farewell! 👋\n")
+            with open("chat.txt", "w") as f:
+                for message in conversation_history:
+                    role = message["role"] 
+                    if role == "user":
+                        label = "You"
+                    else:
+                        label = persona['name']
+                    text = " ".join(part["text"] for part in message["parts"])
+                    f.write(f"{label}: {text}\n")
+            
+                
             break
 
         if not user_input:
