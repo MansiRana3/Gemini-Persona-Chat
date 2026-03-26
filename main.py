@@ -7,6 +7,7 @@ from personas.lady_whistledown import LADY_WHISTLEDOWN
 from personas.phil import PHIL
 from personas.barney import BARNEY
 from prompts.system_prompt import build_system_prompt
+from rag import load_pdf, split_into_chunks, create_collection, search_collection
 
 
 #To add a new persona, just import it
@@ -53,6 +54,14 @@ def chat_with_persona(persona: dict):
     system_prompt = build_system_prompt(persona)
     client = genai.Client(api_key=GEMINI_API_KEY)
     conversation_history = []
+    collection = None
+    pdf_path = input("\n📄 Enter PDF path to load (or press Enter to skip): ").strip()
+    if pdf_path:
+        print("⏳ Loading PDF...")
+        text = load_pdf(pdf_path)
+        chunks = split_into_chunks(text)
+        collection = create_collection(chunks)
+        print(f"✅ PDF loaded! {len(chunks)} chunks indexed.\n")
 
     print("\n" + "═" * 50)
     print(f"🎭 You are now chatting with {persona['name']}")
@@ -80,9 +89,16 @@ def chat_with_persona(persona: dict):
         if not user_input:
             continue
 
+        if collection:
+            relevant_chunks = search_collection(collection, user_input)
+            context = "\n\n".join(relevant_chunks)
+            augmented_input = f"Context from document:\n{context}\n\nUser question: {user_input}"
+        else:
+            augmented_input = user_input
+
         conversation_history.append({
             "role": "user",
-            "parts": [{"text": user_input}]
+            "parts": [{"text": augmented_input}]
         })
 
         try:
