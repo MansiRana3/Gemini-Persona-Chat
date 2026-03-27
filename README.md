@@ -83,7 +83,10 @@ ai_persona_engine/
 ├── config.py               # All constants in one place
 ├── gemini_rest.py          # Gemini via raw HTTP
 ├── gemini_sdk.py           # Gemini via official SDK
-├── main.py                 # The chat loop
+├── main.py                 # CLI chat loop
+├── app.py                  # Streamlit web UI
+├── rag.py                  # RAG - PDF loading and search
+├── agent.py                # Agent - web search
 ├── personas/               # One file per character
 └── prompts/                # Prompting logic
 ```
@@ -97,7 +100,7 @@ I kept things separated on purpose — personas know nothing about API calls, AP
 - Persistent chat history across sessions
 - More characters
 - Deploy online
-- More characters
+
 
 ---
 
