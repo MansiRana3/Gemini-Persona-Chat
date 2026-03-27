@@ -1,7 +1,7 @@
 # 🎭 AI Persona Roleplay Engine
 
 A web app where you can chat with fictional characters — powered by Google's Gemini AI. Built with a Streamlit UI, RAG for document Q&A, and an Agent for real-time web search.
-
+Link - https://gemini-persona-chat-mkheurs5qrf8taccgjsmvd.streamlit.app/
 ---
 
 ## What it does
