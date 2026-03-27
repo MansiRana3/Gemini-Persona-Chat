@@ -7,6 +7,10 @@ A web app where you can chat with fictional characters — powered by Google's G
 ## What it does
 
 Pick a character from the menu and just... talk to them. They stay in character, remember what you said earlier in the conversation, and respond in their own style and personality.
+- Saves every conversation to chat.txt when you quit
+- Upload any PDF and ask questions from it (RAG)
+- Ask about current events — personas search the web automatically (Agent)
+- Chat via a clean web interface (Streamlit)
 
 Current characters:
 - Sherlock Holmes 🔍
@@ -15,10 +19,6 @@ Current characters:
 - Phil Dunphy 🏡
 - Barney Stinson 👔
 
-Saves every conversation to chat.txt when you quit
-Upload any PDF and ask questions from it (RAG)
-Ask about current events — personas search the web automatically (Agent)
-Chat via a clean web interface (Streamlit)
 ---
 
 ## How to run it
