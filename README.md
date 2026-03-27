@@ -1,8 +1,6 @@
 # 🎭 AI Persona Roleplay Engine
 
-A CLI app where you can chat with fictional characters in your terminal — powered by Google's Gemini AI.
-
-I built this as my first hands-on GenAI project to actually understand how LLMs work, not just use them.
+A web app where you can chat with fictional characters — powered by Google's Gemini AI. Built with a Streamlit UI, RAG for document Q&A, and an Agent for real-time web search.
 
 ---
 
@@ -18,7 +16,9 @@ Current characters:
 - Barney Stinson 👔
 
 Saves every conversation to chat.txt when you quit
-
+Upload any PDF and ask questions from it (RAG)
+Ask about current events — personas search the web automatically (Agent)
+Chat via a clean web interface (Streamlit)
 ---
 
 ## How to run it
@@ -53,6 +53,9 @@ Get a free key at [aistudio.google.com](https://aistudio.google.com)
 py main.py
 ```
 
+
+# For web UI
+streamlit run app.py
 ---
 
 ## What I actually learned building this
@@ -66,6 +69,10 @@ I wanted to understand GenAI from the ground up so I built everything the hard w
 **Prompting techniques** — zero-shot, few-shot, system prompting, role prompting, chain-of-thought, and temperature tuning. Each one is implemented separately so I could see exactly how they behave differently.
 
 **Conversation memory** — LLMs don't remember anything between requests. The way memory works is you maintain a list of every message sent and received, then send the full list every single time. Gemini isn't remembering — you're reminding it. This is how ChatGPT works too.
+
+**RAG** — built document Q&A from scratch using ChromaDB and embeddings. Chunks the PDF, stores embeddings, searches by meaning not keywords, sends relevant chunks to Gemini.
+
+**AI Agents** — built web search capability using Tavily. Gemini automatically decides when to search based on whether the question needs current information.
 
 ---
 
@@ -87,12 +94,13 @@ I kept things separated on purpose — personas know nothing about API calls, AP
 
 ## Things I want to add later
 
-- Web UI instead of CLI
-- RAG so characters can reference custom documents
+- Persistent chat history across sessions
+- More characters
+- Deploy online
 - More characters
 
 ---
 
 ## Tech used
 
-Python, Google Gemini API (gemini-2.5-flash), google-genai SDK, requests, python-dotenv
+Python, Google Gemini API (gemini-2.5-flash), google-genai SDK, requests, python-dotenv ,Streamlit, ChromaDB, Tavily, pypdf
