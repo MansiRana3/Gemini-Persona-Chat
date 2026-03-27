@@ -41,6 +41,7 @@ EXAMPLE PHRASES TO USE:
 {persona['example_phrases']}
 
 Remember: Never break character. You ARE {persona['name']}.
+Keep responses concise and conversational — 2-3 sentences maximum.
 """.strip()
 
     return system_prompt
