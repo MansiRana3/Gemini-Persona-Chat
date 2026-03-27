@@ -8,7 +8,7 @@ from personas.phil import PHIL
 from personas.barney import BARNEY
 from prompts.system_prompt import build_system_prompt
 from rag import load_pdf, split_into_chunks, create_collection, search_collection
-
+from agent import search_web, needs_web_search
 
 #To add a new persona, just import it
 # and add one line here. Nothing else changes.
@@ -93,6 +93,10 @@ def chat_with_persona(persona: dict):
             relevant_chunks = search_collection(collection, user_input)
             context = "\n\n".join(relevant_chunks)
             augmented_input = f"Context from document:\n{context}\n\nUser question: {user_input}"
+        elif needs_web_search(user_input, client):
+            print("🔍 Searching the web...")
+            web_results = search_web(user_input)
+            augmented_input = f"Current information from web:\n{web_results}\n\nUser question: {user_input}"
         else:
             augmented_input = user_input
 
